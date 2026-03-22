@@ -2,9 +2,10 @@ namespace Application.Interfaces
 {
     public interface IRepository<T> where T : class
     {
-        void Add(T entity);
-        T Get(Guid id);
-        IEnumerable<T> GetAll();
-        void Delete(T entity);
+        Task AddAsync(T entity);
+        Task UpdateAsync(T entity);
+        Task<T?> GetAsync(Guid id);
+        Task<IEnumerable<T>> GetAllAsync();
+        Task DeleteAsync(T entity);
     }
 }

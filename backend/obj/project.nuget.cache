@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "mxvuVSe2/rjNtUAcJFpAJSzMiNVhTBn+8PfUjeJB6gmOZkAgyMtUJlsGWs/5sR9MNgwihUmA7F5QOMzlS+Jfbg==",
+  "dgSpecHash": "XEymD2XAqXGugoGbVc2cK8eIu1JulpOAy5nZSMQunaxIfbiKF7E1kOzB+tRvJOgT+wyCj/ih+bD8lTc8MNFGdQ==",
   "success": true,
   "projectFilePath": "/home/asifabu272/fproject/backend/backend.csproj",
   "expectedPackageFiles": [
     "/home/asifabu272/.nuget/packages/antlr3.runtime/3.5.1/antlr3.runtime.3.5.1.nupkg.sha512",
+    "/home/asifabu272/.nuget/packages/bcrypt.net-next/4.1.0/bcrypt.net-next.4.1.0.nupkg.sha512",
     "/home/asifabu272/.nuget/packages/fluentnhibernate/3.3.0/fluentnhibernate.3.3.0.nupkg.sha512",
     "/home/asifabu272/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/asifabu272/.nuget/packages/iesi.collections/4.1.1/iesi.collections.4.1.1.nupkg.sha512",

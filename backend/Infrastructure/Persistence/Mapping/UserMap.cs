@@ -9,10 +9,14 @@ namespace Infrastructure.Persistence.Mapping
         {
             Table("users");
 
-            Id(x => x.Id).GeneratedBy.Guid();
-
+Id(x => x.Id)
+    .GeneratedBy.Assigned().Column("id")
+                .CustomType("Guid"); // ✅ IMPORTANT
             Map(x => x.Username);
             Map(x => x.PasswordHash);
+            Map(x => x.CreatedAt);
+            Map(x => x.UpdatedAt);
+            Map(x => x.IsDeleted);
         }
     }
 }

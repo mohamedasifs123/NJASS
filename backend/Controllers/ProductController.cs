@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Application.Services;
+using Application.DTOs;
+using System.ComponentModel.DataAnnotations;
 
 namespace Controllers
 {
@@ -15,16 +17,48 @@ namespace Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(ProductRequest request)
+        public async Task<IActionResult> Create([FromBody] CreateProductDto request)
         {
-            _service.Create(request.Name, request.Price);
+            await _service.Create(request);
             return Ok();
+        }
+
+        // ✅ GET: api/product
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var products = await _service.GetAll();
+            return Ok(products);
+        }
+
+        // ✅ GET: api/product/1
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var product = await _service.GetById(id);
+
+            if (product == null)
+                return NotFound();
+
+            return Ok(product);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateProductDto request)
+        {
+            await _service.Update(id, request);
+            return NoContent(); // 204 No Content for successful update with no return body
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _service.Delete(id);
+            return NoContent(); // 204 No Content for successful deletion
         }
     }
 
-    public class ProductRequest
-    {
-        public string Name { get; set; } = string.Empty;
-        public decimal Price { get; set; }
-    }
+    // DTOs for Product Controller
+    // Moved to Application/DTOs/ProductDtos.cs
 }
+    

@@ -20,9 +20,9 @@ namespace Infrastructure.UnitOfWork
             return new Repository<T>(_session);
         }
 
-        public void Commit()
+        public async Task Commit()
         {
-            _transaction.Commit();
+            await _transaction.CommitAsync();
         }
 
         public void Rollback()

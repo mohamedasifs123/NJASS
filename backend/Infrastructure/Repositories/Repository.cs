@@ -1,4 +1,5 @@
 using NHibernate;
+using NHibernate.Linq;
 using Application.Interfaces;
 
 namespace Infrastructure.Repositories
@@ -12,24 +13,28 @@ namespace Infrastructure.Repositories
             _session = session;
         }
 
-        public void Add(T entity)
+        public async Task AddAsync(T entity)
         {
-            _session.Save(entity);
+            await _session.SaveAsync(entity);
         }
 
-        public T Get(Guid id)
+        public async Task UpdateAsync(T entity)
         {
-            return _session.Get<T>(id);
+            await _session.UpdateAsync(entity);
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<T?> GetAsync(Guid id)
         {
-            return _session.Query<T>().ToList();
+            return await _session.GetAsync<T>(id);
         }
 
-        public void Delete(T entity)
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-            _session.Delete(entity);
+            return await _session.Query<T>().ToListAsync();
+        }
+        public async Task DeleteAsync(T entity)
+        {
+            await _session.DeleteAsync(entity);
         }
     }
 }

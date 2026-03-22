@@ -5,7 +5,7 @@ namespace Infrastructure.UnitOfWork
     public interface IUnitOfWork
     {
         IRepository<T> Repository<T>() where T : class;
-        void Commit();
+        Task Commit();
         void Rollback();
     }
 }
